@@ -31,6 +31,10 @@ test2.number = Float.pi
 
 coreData.save()
 
+// check if Null dictionary serializes
+let test0Dict = Dictionary<String, Any>().serializable
+print("\(test0Dict)")
+
 // check if Test1 serializes
 let test1Dict = ["one": test1].serializable
 print("\(String(describing: test1Dict))")
