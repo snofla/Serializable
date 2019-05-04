@@ -30,7 +30,7 @@ extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
     
     /// Creates a serializable dictionary, by checking recursively
     /// whether values are serializable
-    var serializable: [String: Any]? {
+    var serializable: [String: Any] {
         get {
             let result = self.map { (k, v) -> (String, Any) in
                 if let object = v as? ESerializable {
@@ -38,7 +38,7 @@ extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
                     return (k as! String, object.serializable)
                 } else if let object = v as? Dictionary<Key, Value> {
                     // if encountered type is a dictionary, serialize
-                    return (k as! String, object.serializable ?? NSNull())
+                    return (k as! String, object.serializable)
                 } else {
                     // otherwise return the value
                     return (k as! String, v)
