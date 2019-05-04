@@ -16,7 +16,7 @@ extension NSManagedObject: ESerializable {
         let propertyKeys = Array(self.entity.attributesByName.keys)
         let dict = self.dictionaryWithValues(forKeys: propertyKeys)
         let resultingDict = dict.serializable
-        return resultingDict ?? NSNull()
+        return resultingDict
     }
     
 }
